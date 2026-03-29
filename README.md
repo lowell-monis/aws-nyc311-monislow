@@ -21,7 +21,11 @@ aws-nyc311-monislow/
 │   ├── complaints.csv
 │   └── agencies.csv
 ├── sql/                      # Athena queries
+│   ├── eda_reference.sql
+│   ├── resolution_time.sql
+│   └── stakeholder_query.sql
 ├── notes/                    # Observations, decisions
+│   └── sanity_check_log.md
 └── reports/                  # Stakeholder outputs
 ```
 
@@ -37,4 +41,3 @@ See [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md) for full schema.
 - Empty `closed_date` = open/unresolved requests
 - Some `incident_zip` values are 0 or missing
 - String dates need parsing in Athena/SQL
-- [Add any other assumptions or issues you identified during data exploration]
