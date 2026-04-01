@@ -36,6 +36,7 @@ See [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md) for full schema.
 
 **Stakeholder questions**:
 - The NYC Mayor's Office of Operations is concerned about response inequity. They suspect that certain agencies are slower at resolving high-priority issues in specific boroughs compared to the citywide average. The Office wants to indentify these lagging sectors, i.e., specific combinations of agencies and boroughs where the resolution time is poorly performing. For each agency, which boroughs are underperforming in resolution speed for their most common complaints, and how does each borough's average resolution time compare to the agency's citywide benchmark?
+- The mayor's office also wants to know whether certain types of 311 complaints are likely to be resolved within 3 days, and if a model can be built to flag fast vs. slow resolutions at intake.
 
 ## Assumptions and Known Issues
 - Empty `closed_date` = open/unresolved requests

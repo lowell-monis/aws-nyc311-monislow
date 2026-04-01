@@ -1,7 +1,7 @@
 -- Athena query for model data generation
 -- Motivated by stakeholder question: The mayor's office wants to know whether certain types of 311 complaints are likely to be resolved within 3 days, and if a model can be built to flag fast vs. slow resolutions at intake.
 -- Features: agency, borough, problem, incident_zip, day_of_week, hour_of_day, problem_category
--- Target: resolved_quickly
+-- Target: resolved_quickly --1 if yes, else 0
 CREATE TABLE nyc311_db.resolution_speed_modeling AS
 SELECT
     agency,
