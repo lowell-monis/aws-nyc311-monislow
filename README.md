@@ -25,10 +25,13 @@ aws-nyc311-monislow/
 |       └── complaints.csv
 ├── sql/                      # Athena queries
 │   ├── eda_reference.sql
+│   ├── res_time_model_athena_extraction.sql
 │   ├── resolution_time.sql
 │   └── stakeholder_query.sql
 ├── notes/                    # Observations, decisions
 │   └── sanity_check_log.md
+├── notebooks/                # Jupyter notebooks for output replication
+│   └── data_load_verify.ipynb
 └── reports/                  # Stakeholder outputs
 ```
 
