@@ -1,3 +1,3 @@
 data/raw/*.csv
 data/processed/*.csv
-s.ipynb_checkpoints/
+.ipynb_checkpoints
