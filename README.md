@@ -17,9 +17,12 @@
 aws-nyc311-monislow/
 ├── README.md                 # Data source, S3 paths, assumptions
 ├── DATA_DICTIONARY.md        # Column details
-├── raw/                      # Local copies of S3 uploads
-│   ├── complaints.csv
-│   └── agencies.csv
+├── data/                     # Local copies of S3 uploads. Files will be recreated when reproduced.
+│   ├── processed
+|   |   └── modeling_data_resolution_time.csv
+│   └── raw
+|       ├── agencies.csv
+|       └── complaints.csv
 ├── sql/                      # Athena queries
 │   ├── eda_reference.sql
 │   ├── resolution_time.sql
