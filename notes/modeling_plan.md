@@ -3,26 +3,28 @@
 **Date created:** April 1, 2026
 
 ## Business question
-Predict [YOUR QUESTION, e.g., high-volume complaint agencies by borough]
+Predict if a complaint will be resolved quickly (defined as within 3 days) upon intake, flagging projected slow resolutions, and infer  whether certain types of 311 complaints are likely to be resolved within 3 days.
 
 ## Data source
-- **S3 path:** [YOUR S3 PATH]
-- **Records:** [number from df.shape[0]]
-- **Athena query:** sql/athena_to_modeling.sql
+- **S3 path:** `s3://cmse492-monislow-nyc311-975049958391-us-east-1-an/modeling/data_resolution_time.csv`
+- **Records:** 173870 entries
+- **Athena query:** [`~/sql/res_time_model_athena_extraction.sql`](../sql/res_time_model_athena_extraction.sql)
 
-## Features (update/expand based on your query)
-- agency (string)
-- borough (string)
-- n_complaints (numeric, count of complaints)
-- avg_days_to_close (numeric, average resolution time)
-- ... (other features)
+## Features
+- `agency` (string, convert to categorical)
+- `borough` (string, convert to categorical)
+- `problem` (string, convert to categorical)
+- `incident_zip` (string, convert to integer)
+- `day_of_week` (string, convert to integer)
+- `hour_of_day` (string, convert to integer)
+- `problem_category` (string, convert to categorical)
 
 ## Target
-- **Name:** [YOUR TARGET VARIABLE, e.g., volume_quartile]
-- **Type:** [MODEL TYPE, e.g., Classification (1=high volume, 2-4=lower volume)]
-- **Balance/Distribution:** [paste results from your target variable distribution check]
+- **Name:** `resolved_quickly`
+- **Type:** Classification; yes = 1, no = 0
+- **Balance/Distribution:** The number of complaints resolved quickly, or within three days in this sample is 146158, which is 84.06% of the data. The number of complaints that take longer is 27712, which is 15.94%.
 
-## Modeling approach (update based on your question and data)
+## Modeling approach
 - **Baseline:** Logistic regression (interpretable, fast to train)
 - **Metrics:** Accuracy, precision, recall
 - **Train/test split:** 80/20

@@ -29,8 +29,11 @@ aws-nyc311-monislow/
 │   ├── resolution_time.sql
 │   └── stakeholder_query.sql
 ├── notes/                    # Observations, decisions
+│   ├── modeling_plan.md
 │   └── sanity_check_log.md
 ├── notebooks/                # Jupyter notebooks for output replication
+│   ├── data_extraction_athena.ipynb (TBD)
+│   ├── data_extraction_local.ipynb (TBD)
 │   └── data_load_verify.ipynb
 └── reports/                  # Stakeholder outputs
 ```
