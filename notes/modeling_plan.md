@@ -40,4 +40,4 @@ Predict if a complaint will be resolved quickly (defined as within 3 days) upon 
 - Fit baseline logistic regression
 - Evaluate and interpret results, specifically accounting for the class imbalance
 - Attempt diagnostic plots and metrics
-- Look into dimensionality reductions
+- Look into dimensionality reduction
