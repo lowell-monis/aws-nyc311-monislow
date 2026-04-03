@@ -30,9 +30,9 @@ Predict if a complaint will be resolved quickly (defined as within 3 days) upon 
 - **Train/test split:** 80/20 with stratified sampling for classes (potentially SMOTE)
 
 ## Data quality notes
-- The data has a grappling class imbalance problem.
-- For future work, an agency-by-agency definition for resolution speed would be beneficial. For example, NYPD might need a definition of less than a day instead of 3 if 95% of their complaints are resolved in so little time. This is temporarily outside the scope of the project.
-- No missing values have been observed.
+- The data has a class imbalance problem.
+- For future work, an agency-by-agency definition for resolution speed would be beneficial. For example, the NYPD might need a definition of less than a day instead of 3 if 95% of their complaints are resolved in so little time. This is temporarily outside the scope of the project.
+- 1768 rows have a missing zip code. I have decided to create two models to compare performance: one without zip code, and one with zip code, but with those 1768 rows dropped.
 - Upon the application of the IQR method for all continuous features, no outliers have been detected. I.e., no data falls outside $Q_1 - 1.5(Q_3-Q_1)$.
 
 ## Next steps
