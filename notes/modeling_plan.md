@@ -26,18 +26,33 @@ Predict if a complaint will be resolved quickly (defined as within 3 days) upon 
 
 ## Modeling approach
 - **Baseline:** Logistic regression (interpretable, fast to train)
-- **Metrics:** Accuracy, precision, recall, statistical significance, F1 score to address class imbalance problem
-- **Train/test split:** 80/20 with stratified sampling for classes (potentially SMOTE)
+- **Metrics:** Accuracy, precision, recall
+- **Train/test split:** 80/20 with stratified sampling for classes
 
 ## Data quality notes
 - The data has a class imbalance problem.
 - For future work, an agency-by-agency definition for resolution speed would be beneficial. For example, the NYPD might need a definition of less than a day instead of 3 if 95% of their complaints are resolved in so little time. This is temporarily outside the scope of the project.
-- 1768 rows have a missing zip code. I have decided to create two models to compare performance: one without zip code, and one with zip code, but with those 1768 rows dropped.
+- 1768 rows have a missing zip code. I have decided to drop the zip codes for this reason, along with the wider reasoning that it is difficult to do one-hot encoding with more than 200 unique codes. It would be nonsensical to use them as a numerical feature.
 - Upon the application of the IQR method for all continuous features, no outliers have been detected. I.e., no data falls outside $Q_1 - 1.5(Q_3-Q_1)$.
 
+## Baseline Model Results
+
+- **Model:** Logistic Regression
+- **Features used:**  `agency`, `borough`, `problem_category`, `day_of_week`, `hour_of_day`
+- **Target:** `resolved_quickly
+- **Train/test split:** 80/20, `random_state=492`, stratified sampling
+
+### Metrics
+- Accuracy:  0.847
+- Precision: 0.853
+- Recall:    0.988
+
+### Interpretation
+The model achieves an overall accuracy of 85%, but this is largely driven by the 84-16 class imbalance, as the confusion matrix shows the model almost exclusively predicts the majority class (Class 1, resolved quickly). While recall for Class 1 is 99%, the model struggles significantly to identify slow resolutions, with a recall of only 10% for Class 0. For stakeholders, precision for Class 0 is likely more important to avoid "false alarms" when flagging slow resolutions, yet the current model is effectively a majority-class classifier that offers little predictive power for the minority group. Recall for Class 1 is also important, since one does not need missing cases of urgent resolution problems that do not get all the resources they need. The agency that the problem is being assigned to is highly predictive of the resolution speed, as well as which hour of the day. The problem being associated with traffic also makes it more likely to be resolved quickly. However, none of the other features match the influence of whether the problem was assigned to the NYPD or not.
+
+### Limitation
+A primary limitation is the imbalance-driven bias, where the model achieves high accuracy simply by predicting that nearly every complaint will be resolved quickly. Because the model has a recall of only 0.10 for the "slow" class, it fails to meet the business objective of flagging projected slow resolutions. Furthermore, the high positive coefficients for specific agencies (like `agency_NYPD`) suggest the model may be relying on agency-level shortcuts rather than capturing the actual complexity of the problems, potentially overlooking neighborhood or temporal variations that are more actionable for stakeholders. I was unable to provide reasonable data for regionality beyond the borough, like the zip code in the current framing of the model, or a more specific problem classification, due to computational constraints and missing values. While it does not look like the borough where the problem is taking place is highly predictive, it is possible that including the zip code may have provided more information.
+
 ## Next steps
-- Train/test split
-- Fit baseline logistic regression
-- Evaluate and interpret results, specifically accounting for the class imbalance
-- Attempt diagnostic plots and metrics
+- Look into alternative sampling methods to manage class balance, or amending thresholds for quick resolution
 - Look into dimensionality reduction
