@@ -53,6 +53,10 @@ The model achieves an overall accuracy of 85%, but this is largely driven by the
 ### Limitation
 A primary limitation is the imbalance-driven bias, where the model achieves high accuracy simply by predicting that nearly every complaint will be resolved quickly. Because the model has a recall of only 0.10 for the "slow" class, it fails to meet the business objective of flagging projected slow resolutions. Furthermore, the high positive coefficients for specific agencies (like `agency_NYPD`) suggest the model may be relying on agency-level shortcuts rather than capturing the actual complexity of the problems, potentially overlooking neighborhood or temporal variations that are more actionable for stakeholders. I was unable to provide reasonable data for regionality beyond the borough, like the zip code in the current framing of the model, or a more specific problem classification, due to computational constraints and missing values. While it does not look like the borough where the problem is taking place is highly predictive, it is possible that including the zip code may have provided more information.
 
+## Comparison with SageMaker models
+
+I used the Linear Learner built-in model to conduct this binary classification. The results were exactly the same in terms of accuracy, precision, and recall. I do not recommend the computational cost of using the built-in SageMaker workflow for this project, as there is no significant positive effect of using it on the magnitude of data we currently have. This may change if we switch to a computationally expensive model like XGBoost that may need more compute and may end up being faster to use on SageMaker's built-in network rather than our local installations.
+
 ## Next steps
 - Look into alternative sampling methods to manage class balance, or amending thresholds for quick resolution
 - Look into dimensionality reduction
