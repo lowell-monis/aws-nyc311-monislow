@@ -51,3 +51,7 @@ See [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md) for full schema.
 - Empty `closed_date` = open/unresolved requests
 - Some `incident_zip` values are 0 or missing
 - String dates need parsing in Athena/SQL
+
+## Data
+
+The data folders currently do not contain the data. To obtain the data, go to the CMSE 492 website, and place the raw data into the data folder
