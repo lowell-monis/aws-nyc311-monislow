@@ -22,7 +22,7 @@ Predict if a complaint will be resolved quickly (defined as within 3 days) upon 
 ## Target
 - **Name:** `resolved_quickly`
 - **Type:** Classification; yes = 1, no = 0
-- **Balance/Distribution:** The number of complaints resolved quickly, or within three days in this sample is 146158, which is 84.06% of the data. The number of complaints that take longer is 27712, which is 15.94%.
+- **Balance/Distribution:** The number of complaints resolved quickly, or within three days, in this sample is 146158, which is 84.06% of the data. The number of complaints that take longer is 27712, which is 15.94%.
 
 ## Modeling approach
 - **Baseline:** Logistic regression (interpretable, fast to train)
