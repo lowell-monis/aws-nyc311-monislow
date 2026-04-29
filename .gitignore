@@ -1,4 +1,4 @@
 data/raw/*.csv
 data/processed/*.csv
 .ipynb_checkpoints
-results/figures/*
+reports/figures/*.png
